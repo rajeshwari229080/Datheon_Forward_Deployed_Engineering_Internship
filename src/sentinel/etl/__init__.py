@@ -12,6 +12,7 @@ from sentinel.etl.schemas import (
 )
 from sentinel.etl.base import BaseExtractor, BaseChunker
 from sentinel.etl.chunker import StructureAwareChunker
+from sentinel.etl.pipeline import IngestionPipeline
 
 __all__ = [
     "RawDocument",
@@ -25,4 +26,5 @@ __all__ = [
     "BaseExtractor",
     "BaseChunker",
     "StructureAwareChunker",
+    "IngestionPipeline",
 ]
