@@ -95,6 +95,10 @@ def create_app(settings: Settings = None) -> FastAPI:
     # Mount base health routes
     app.include_router(health_router)
 
+    # Mount document ETL routes
+    from sentinel.api.routes.documents import router as documents_router
+    app.include_router(documents_router)
+
     return app
 
 
