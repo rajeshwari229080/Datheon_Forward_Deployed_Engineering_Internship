@@ -42,6 +42,8 @@ class OperationStatusCheckParams(BaseModel):
 
 class ToolDefinition(BaseModel):
     """Explicit tool registry definition."""
+    model_config = {"arbitrary_types_allowed": True}
+
     name: str
     description: str
     category: ToolCategory
