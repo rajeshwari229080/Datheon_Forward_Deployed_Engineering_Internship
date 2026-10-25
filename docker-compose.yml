@@ -1,0 +1,36 @@
+services:
+  sentinel-fabric:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sentinel-enterprise-fabric:1.0.0
+    container_name: sentinel-enterprise-fabric
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=production
+      - LOG_LEVEL=INFO
+      - EMBEDDING_PROVIDER=mock
+      - LLM_PROVIDER=mock
+      - CHROMA_PERSIST_DIR=/app/data/chroma
+      - AUDIT_LOG_PATH=/app/data/audit/audit_events.jsonl
+    volumes:
+      - sentinel-data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health/live')"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    security_opt:
+      - no-new-privileges:true
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 2048M
+
+volumes:
+  sentinel-data:
+    driver: local
