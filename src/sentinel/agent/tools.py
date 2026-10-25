@@ -50,9 +50,6 @@ class ToolDefinition(BaseModel):
     param_model: Type[BaseModel]
     requires_approval: bool = False
 
-    class Config:
-        arbitrary_types_allowed = True
-
 
 class ToolRegistry:
     """Explicit allowlist of authorized agent tools."""
