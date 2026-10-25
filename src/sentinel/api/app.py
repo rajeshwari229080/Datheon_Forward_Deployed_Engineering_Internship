@@ -99,6 +99,10 @@ def create_app(settings: Settings = None) -> FastAPI:
     from sentinel.api.routes.documents import router as documents_router
     app.include_router(documents_router)
 
+    # Mount Search & RAG routes
+    from sentinel.api.routes.rag import router as rag_router
+    app.include_router(rag_router)
+
     return app
 
 
