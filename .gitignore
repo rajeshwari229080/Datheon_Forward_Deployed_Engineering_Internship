@@ -43,11 +43,16 @@ htmlcov/
 .pytest_cache/
 .ruff_cache/
 
-# Data & Persistence
+# Data & Persistence (runtime outputs)
 data/
 chroma_data/
 *.sqlite3
 *.log
+
+# Explicitly track documentation media assets
+!assets/
+!assets/*
+!image.png
 
 # OS generated files
 .DS_Store
