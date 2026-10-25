@@ -12,7 +12,8 @@ from typing import Any, Dict, Optional
 correlation_id_ctx: ContextVar[Optional[str]] = ContextVar("correlation_id_ctx", default=None)
 
 SENSITIVE_PATTERNS = [
-    (re.compile(r"(?i)(authorization|api[_-]?key|token|secret|password)[\"']?\s*[:=]\s*[\"']?([a-zA-Z0-9_\-\.]{6,})[\"']?"), r"\1=***REDACTED***"),
+    (re.compile(r"(?i)(authorization|api[_-]?key|token|secret|password)[\"']?\s*[:=]\s*(?:bearer\s+)?[\"']?([a-zA-Z0-9_\-\.]{6,})[\"']?"), r"\1=***REDACTED***"),
+    (re.compile(r"(?i)\bbearer\s+[a-zA-Z0-9_\-\.]{6,}\b"), "Bearer ***REDACTED***"),
     (re.compile(r"\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b"), "***CARD_REDACTED***"),
     (re.compile(r"\b\d{3}-\d{2}-\d{4}\b"), "***SSN_REDACTED***"),
 ]
