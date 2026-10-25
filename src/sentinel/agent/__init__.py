@@ -13,6 +13,8 @@ from sentinel.agent.tools import (
     OperationStatusCheckParams,
 )
 from sentinel.agent.approvals import ApprovalGate, ApprovalStatus
+from sentinel.agent.audit import AuditLogger
+from sentinel.agent.engine import AgentEngine, ActionTrace, AgentExecutionResult
 
 __all__ = [
     "MockERPBackend",
@@ -27,4 +29,8 @@ __all__ = [
     "OperationStatusCheckParams",
     "ApprovalGate",
     "ApprovalStatus",
+    "AuditLogger",
+    "AgentEngine",
+    "ActionTrace",
+    "AgentExecutionResult",
 ]
