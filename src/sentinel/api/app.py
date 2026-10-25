@@ -103,6 +103,10 @@ def create_app(settings: Settings = None) -> FastAPI:
     from sentinel.api.routes.rag import router as rag_router
     app.include_router(rag_router)
 
+    # Mount Agent & Governance routes
+    from sentinel.api.routes.agent import router as agent_router
+    app.include_router(agent_router)
+
     return app
 
 
