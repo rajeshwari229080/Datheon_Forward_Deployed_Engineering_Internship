@@ -12,6 +12,7 @@ from sentinel.agent.tools import (
     TicketStatusLookupParams,
     OperationStatusCheckParams,
 )
+from sentinel.agent.approvals import ApprovalGate, ApprovalStatus
 
 __all__ = [
     "MockERPBackend",
@@ -24,4 +25,6 @@ __all__ = [
     "SupportTicketCreateParams",
     "TicketStatusLookupParams",
     "OperationStatusCheckParams",
+    "ApprovalGate",
+    "ApprovalStatus",
 ]
